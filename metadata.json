@@ -1,0 +1,6 @@
+{
+  "name": "Neovis",
+  "description": "Ultra-sleek high-tech AI agency website presenting custom AI engines, automation systems, and projects showcase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
