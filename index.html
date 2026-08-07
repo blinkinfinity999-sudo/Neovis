@@ -9,18 +9,20 @@
   <meta name="description" content="Neovis provides cutting-edge AI integration, custom web development, workflow automation, and digital transformation for modern businesses.">
   <meta name="robots" content="index, follow">
 
-  <!-- Canonical Address -->
+  <!-- Canonical URL (Primary Live Index Address) -->
   <link rel="canonical" href="https://blinkinfinity999-sudo.github.io/Neovis/">
 
-  <!-- Favicon Standards for Google & Browsers -->
+  <!-- Favicon Standards for Browsers & Google Search (Multiples of 48x48) -->
   <link rel="icon" type="image/png" sizes="32x32" href="logo_favicon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="logo_favicon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="logo_favicon.png">
+  <link rel="shortcut icon" href="logo_favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="logo_favicon.png">
 
-  <!-- Open Graph / Social Media Preview -->
+  <!-- Open Graph / Social Media Preview Parameters -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://blinkinfinity999-sudo.github.io/Neovis/">
-  <meta property="og:title" content="Neovis | Intelligent AI Solutions & Custom Engines">
+  <meta property="og:title" content="Neovis — Next-Gen AI & Web Solutions">
   <meta property="og:description" content="Cutting-edge AI integration, custom web development, and digital solutions.">
   <meta property="og:image" content="https://blinkinfinity999-sudo.github.io/Neovis/logo_favicon.png">
 
@@ -33,794 +35,1436 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* CSS RESETS & VARIABLES */
+ /* CSS RESETS & VARIABLES */
+
     :root {
+
       --bg-dark: #0a0a0c;
+
       --bg-card: rgba(255, 255, 255, 0.03);
+
       --bg-card-hover: rgba(255, 255, 255, 0.06);
+
       --border-glass: rgba(255, 255, 255, 0.10);
+
       --border-glass-hover: rgba(0, 242, 254, 0.40);
+
       --neon-blue: #00f2fe;
+
       --neon-violet: #4facfe;
+
       --accent-purple: #8a2be2;
+
       --accent-glow: rgba(0, 242, 254, 0.25);
+
       --text-main: #ffffff;
+
       --text-muted: #9ca3af;
+
       --font-heading: 'Outfit', sans-serif;
+
       --font-body: 'Inter', sans-serif;
+
     }
+
+
 
     * {
+
       box-sizing: border-box;
+
       margin: 0;
+
       padding: 0;
+
     }
+
+
 
     body {
+
       background-color: var(--bg-dark);
+
       color: var(--text-main);
+
       font-family: var(--font-body);
+
       overflow-x: hidden;
+
       line-height: 1.6;
+
       -webkit-font-smoothing: antialiased;
+
     }
+
+
 
     /* BACKGROUND CANVAS & MESH GRADIENTS */
+
     #bg-canvas {
+
       position: fixed;
+
       top: 0;
+
       left: 0;
+
       width: 100vw;
+
       height: 100vh;
+
       z-index: -2;
+
       pointer-events: none;
+
     }
+
+
 
     .ambient-glow {
+
       position: fixed;
+
       border-radius: 50%;
+
       filter: blur(120px);
+
       pointer-events: none;
+
       z-index: -1;
+
       opacity: 0.35;
+
       animation: floatGlow 18s ease-in-out infinite alternate;
+
     }
+
+
 
     .glow-1 {
+
       top: -10%;
+
       left: -10%;
+
       width: 40vw;
+
       height: 40vw;
+
       background: radial-gradient(circle, var(--neon-blue) 0%, rgba(0, 242, 254, 0) 70%);
+
     }
+
+
 
     .glow-2 {
+
       bottom: -10%;
+
       right: -10%;
+
       width: 40vw;
+
       height: 40vw;
+
       background: radial-gradient(circle, var(--neon-violet) 0%, rgba(79, 172, 254, 0) 70%);
+
     }
+
+
 
     @keyframes floatGlow {
+
       0% { transform: translate(0, 0) scale(1); }
+
       50% { transform: translate(-20px, 30px) scale(1.08); }
+
       100% { transform: translate(30px, -15px) scale(0.95); }
+
     }
+
+
 
     /* TYPOGRAPHY & GRADIENT TEXT */
+
     h1, h2, h3, h4, .font-heading {
+
       font-family: var(--font-heading);
+
     }
+
+
 
     .gradient-text {
+
       background: linear-gradient(90deg, var(--neon-blue) 0%, var(--neon-violet) 100%);
+
       -webkit-background-clip: text;
+
       -webkit-text-fill-color: transparent;
+
       display: inline-block;
+
     }
+
+
 
     .gradient-text-blue {
+
       background: linear-gradient(90deg, var(--neon-blue) 0%, var(--neon-violet) 100%);
+
       -webkit-background-clip: text;
+
       -webkit-text-fill-color: transparent;
+
     }
+
+
 
     /* BENTO GRID & GLASSMORPHISM CARDS */
+
     .glass-card {
+
       background: var(--bg-card);
+
       backdrop-filter: blur(20px);
+
       -webkit-backdrop-filter: blur(20px);
+
       border: 1px solid var(--border-glass);
+
       border-radius: 1.5rem; /* 24px Bento corners */
+
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
       position: relative;
+
       overflow: hidden;
+
     }
+
+
 
     .glass-card::before {
+
       content: '';
+
       position: absolute;
+
       top: 0;
+
       left: 0;
+
       right: 0;
+
       height: 1px;
+
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+
     }
+
+
 
     .glass-card:hover {
+
       background: var(--bg-card-hover);
+
       border-color: var(--border-glass-hover);
+
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.15);
+
       transform: translateY(-4px) scale(1.01);
+
     }
+
+
 
     /* SCROLL TRIGGERED REVEAL ANIMATIONS */
+
     .reveal-on-scroll {
+
       opacity: 0;
+
       transform: translateY(35px);
+
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
       will-change: opacity, transform;
+
     }
+
+
 
     .reveal-on-scroll.scale-effect {
+
       transform: translateY(30px) scale(0.96);
+
     }
+
+
 
     .reveal-active {
+
       opacity: 1 !important;
+
       transform: translateY(0) scale(1) !important;
+
     }
+
+
 
     .glass-nav {
+
       background: rgba(10, 10, 12, 0.8);
+
       backdrop-filter: blur(24px);
+
       -webkit-backdrop-filter: blur(24px);
+
       border-bottom: 1px solid var(--border-glass);
+
     }
+
+
 
     /* BUTTONS & CTAS */
+
     .btn-glow {
+
       background: linear-gradient(90deg, var(--neon-blue) 0%, var(--neon-violet) 100%);
+
       color: #000000;
+
       font-weight: 700;
+
       padding: 0.85rem 1.8rem;
+
       border-radius: 1rem;
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0.6rem;
+
       text-decoration: none;
+
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
       box-shadow: 0 0 25px rgba(0, 242, 254, 0.35);
+
       border: none;
+
       cursor: pointer;
+
       font-size: 0.95rem;
+
       letter-spacing: 0.01em;
+
     }
+
+
 
     .btn-glow:hover {
+
       box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
+
       transform: scale(1.03);
+
       color: #000000;
+
     }
+
+
 
     .btn-outline {
+
       background: rgba(255, 255, 255, 0.05);
+
       color: var(--text-main);
+
       font-weight: 600;
+
       padding: 0.85rem 1.8rem;
+
       border-radius: 9999px;
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0.6rem;
+
       text-decoration: none;
+
       border: 1px solid var(--border-glass);
+
       transition: all 0.3s ease;
+
       backdrop-filter: blur(12px);
+
       cursor: pointer;
+
       font-size: 0.95rem;
+
     }
+
+
 
     .btn-outline:hover {
+
       background: rgba(255, 255, 255, 0.1);
+
       border-color: var(--neon-blue);
+
       color: var(--neon-blue);
+
       box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+
       transform: translateY(-2px);
+
     }
+
+
 
     .badge-pill {
+
       background: rgba(0, 242, 254, 0.08);
+
       border: 1px solid rgba(0, 242, 254, 0.25);
+
       color: var(--neon-blue);
+
       padding: 0.35rem 1rem;
+
       border-radius: 9999px;
+
       font-size: 0.75rem;
+
       font-weight: 700;
+
       letter-spacing: 0.08em;
+
       text-transform: uppercase;
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0.5rem;
+
     }
+
+
 
     .pulse-dot {
+
       width: 8px;
+
       height: 8px;
+
       background-color: var(--neon-blue);
+
       border-radius: 50%;
+
       box-shadow: 0 0 10px var(--neon-blue);
+
       animation: pulseAnim 1.8s infinite;
+
     }
+
+
 
     @keyframes pulseAnim {
+
       0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7); }
+
       70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(0, 242, 254, 0); }
+
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
+
     }
+
+
 
     /* CUSTOM UTILITY & LAYOUT CLASSES */
+
     .container-custom {
+
       max-width: 1240px;
+
       margin: 0 auto;
+
       padding: 0 1.5rem;
+
     }
+
+
 
     .nav-link {
+
       color: var(--text-muted);
+
       text-decoration: none;
+
       font-size: 0.95rem;
+
       font-weight: 500;
+
       transition: color 0.25s ease;
+
     }
+
+
 
     .nav-link:hover {
+
       color: var(--neon-blue);
+
     }
+
+
 
     /* INTERACTIVE SIMULATION WIDGET */
+
     .terminal-header {
+
       background: rgba(10, 10, 14, 0.95);
+
       border-bottom: 1px solid var(--border-glass);
+
       padding: 0.75rem 1.25rem;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
     }
+
+
 
     .terminal-dot {
+
       width: 11px;
+
       height: 11px;
+
       border-radius: 50%;
+
       display: inline-block;
+
     }
+
+
 
     .tab-btn {
+
       padding: 0.5rem 1.25rem;
+
       border-radius: 9999px;
+
       background: rgba(255, 255, 255, 0.03);
+
       border: 1px solid var(--border-glass);
+
       color: var(--text-muted);
+
       font-weight: 500;
+
       font-size: 0.85rem;
+
       cursor: pointer;
+
       transition: all 0.25s ease;
+
     }
+
+
 
     .tab-btn.active, .tab-btn:hover {
+
       background: rgba(0, 242, 254, 0.12);
+
       border-color: rgba(0, 242, 254, 0.4);
+
       color: var(--neon-blue);
+
     }
+
+
 
     /* TECH STACK HUB FILTER TABS */
+
     .tech-tab-btn {
+
       padding: 0.6rem 1.4rem;
+
       border-radius: 9999px;
+
       background: rgba(255, 255, 255, 0.03);
+
       border: 1px solid var(--border-glass);
+
       color: var(--text-muted);
+
       font-weight: 600;
+
       font-size: 0.875rem;
+
       cursor: pointer;
+
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
     }
+
+
 
     .tech-tab-btn.active, .tech-tab-btn:hover {
+
       background: rgba(0, 242, 254, 0.15);
+
       border-color: rgba(0, 242, 254, 0.5);
+
       color: var(--neon-blue);
+
       box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+
     }
+
+
 
     /* FAQ ACCORDION STYLING */
+
     .faq-answer {
+
       max-height: 0;
+
       overflow: hidden;
+
       opacity: 0;
+
       transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin-top 0.3s ease;
+
     }
+
+
 
     .faq-item.active .faq-answer {
+
       max-height: 350px;
+
       opacity: 1;
+
       margin-top: 0.85rem;
+
     }
+
+
 
     .faq-item.active .faq-icon {
+
       transform: rotate(180deg);
+
       color: var(--neon-blue);
+
     }
+
+
 
     /* CUSTOM RANGE SLIDER STYLING */
+
     input[type=range] {
+
       -webkit-appearance: none;
+
       width: 100%;
+
       background: transparent;
+
     }
+
+
 
     input[type=range]:focus {
+
       outline: none;
+
     }
+
+
 
     input[type=range]::-webkit-slider-runnable-track {
+
       width: 100%;
+
       height: 8px;
+
       cursor: pointer;
+
       background: rgba(255, 255, 255, 0.1);
+
       border-radius: 9999px;
+
       border: 1px solid rgba(255, 255, 255, 0.08);
+
     }
+
+
 
     input[type=range]::-webkit-slider-thumb {
+
       height: 22px;
+
       width: 22px;
+
       border-radius: 50%;
+
       background: var(--neon-blue);
+
       cursor: pointer;
+
       -webkit-appearance: none;
+
       margin-top: -7px;
+
       box-shadow: 0 0 12px var(--neon-blue);
+
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+
     }
+
+
 
     input[type=range]::-webkit-slider-thumb:hover {
+
       transform: scale(1.2);
+
       box-shadow: 0 0 20px var(--neon-blue);
+
     }
+
+
 
     /* RESPONSIVE LAYOUT HELPER */
+
     @media (max-width: 768px) {
+
       .mobile-menu-open {
+
         display: flex !important;
+
         flex-direction: column;
+
         position: absolute;
+
         top: 100%;
+
         left: 0;
+
         right: 0;
+
         background: rgba(10, 10, 12, 0.95);
+
         backdrop-filter: blur(20px);
+
         padding: 1.5rem;
+
         border-bottom: 1px solid var(--border-glass);
+
       }
+
     }
+
   </style>
+
 </head>
+
 <body>
 
+
+
   <!-- BACKGROUND CANVAS & AMBIENT LIGHTS -->
+
   <canvas id="bg-canvas"></canvas>
+
   <div class="ambient-glow glow-1"></div>
+
   <div class="ambient-glow glow-2"></div>
 
+
+
   <!-- NAVIGATION HEADER -->
+
   <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+
     <div class="container-custom flex items-center justify-between h-20">
+
       <!-- Brand Name -->
+
       <a href="#" class="flex items-center gap-2 text-decoration-none group">
+
         <span class="font-heading font-black text-2xl tracking-[0.22em] bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 bg-clip-text text-transparent filter drop-shadow-[0_0_12px_rgba(0,242,254,0.4)] group-hover:drop-shadow-[0_0_20px_rgba(0,242,254,0.8)] transition-all duration-300">
+
           NEOVIS
+
         </span>
+
         <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#00f2fe] animate-pulse"></span>
+
       </a>
 
-      <!-- Web Desktop Controls -->
+
+
+      <!-- Web Desktop Controls (Active Section Indicator + 3 Horizontal Dots Quick Links Dropdown + Portal) -->
+
       <div class="hidden md:flex items-center gap-3.5 relative">
+
         
+
         <!-- Active Section Indicator Badge -->
+
         <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 text-xs font-mono font-bold tracking-wide shadow-[0_0_12px_rgba(0,242,254,0.15)]">
+
           <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00f2fe] animate-pulse"></span>
+
           <span id="active-section-label" class="uppercase">Home</span>
+
         </div>
+
+
 
         <!-- 3 Horizontal Dots Button -->
+
         <button id="dots-nav-btn" aria-label="Quick Links Menu" class="w-10 h-10 rounded-xl bg-white/5 border border-white/15 hover:border-cyan-400/60 hover:bg-cyan-500/10 text-white hover:text-cyan-400 flex items-center justify-center transition-all duration-300 shadow-lg focus:outline-none group cursor-pointer">
+
           <i class="fa-solid fa-ellipsis text-lg group-hover:scale-110 transition-transform"></i>
+
         </button>
 
+
+
         <!-- System Online Badge -->
+
         <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+
           <span>SYSTEM ONLINE</span>
+
         </div>
+
+
 
         <!-- Portal Link -->
+
         <a href="https://neovis-projects.ai.studio" target="_blank" rel="noopener noreferrer" class="btn-glow text-xs py-2 px-4">
+
           <span>Portal</span>
+
           <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+
         </a>
 
+
+
         <!-- Web Quick Links Dropdown Menu -->
+
         <div id="dots-nav-dropdown" class="hidden absolute right-0 top-14 w-60 p-2 rounded-2xl bg-black/95 border border-cyan-500/40 shadow-[0_10px_35px_rgba(0,0,0,0.9)] backdrop-blur-2xl z-50 animate-fadeIn">
+
           <div class="px-3 py-2 border-b border-white/10 mb-1 flex items-center justify-between text-[11px] font-mono text-cyan-400">
+
             <span>QUICK NAVIGATION</span>
+
             <i class="fa-solid fa-compass"></i>
+
           </div>
+
           <div class="space-y-0.5">
+
             <a href="#hero" class="dropdown-nav-link flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-gray-200 hover:text-cyan-300 hover:bg-cyan-500/15 transition-all group" data-sec="hero">
+
               <span class="flex items-center gap-2.5">
+
                 <i class="fa-solid fa-house text-xs text-cyan-400 w-4 text-center"></i>
+
                 <span>Home</span>
+
               </span>
+
               <i class="fa-solid fa-chevron-right text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+
             </a>
+
             <a href="#fervox" class="dropdown-nav-link flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-gray-200 hover:text-cyan-300 hover:bg-cyan-500/15 transition-all group" data-sec="fervox">
+
               <span class="flex items-center gap-2.5">
+
                 <i class="fa-solid fa-bolt text-xs text-cyan-400 w-4 text-center"></i>
+
                 <span>Fervox AI</span>
+
               </span>
+
               <i class="fa-solid fa-chevron-right text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+
             </a>
+
             <a href="#how-it-works" class="dropdown-nav-link flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-gray-200 hover:text-cyan-300 hover:bg-cyan-500/15 transition-all group" data-sec="how-it-works">
+
               <span class="flex items-center gap-2.5">
+
                 <i class="fa-solid fa-timeline text-xs text-cyan-400 w-4 text-center"></i>
+
                 <span>How It Works</span>
+
               </span>
+
               <i class="fa-solid fa-chevron-right text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+
             </a>
+
             <a href="#projects" class="dropdown-nav-link flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-gray-200 hover:text-cyan-300 hover:bg-cyan-500/15 transition-all group" data-sec="projects">
+
               <span class="flex items-center gap-2.5">
+
                 <i class="fa-solid fa-layer-group text-xs text-cyan-400 w-4 text-center"></i>
+
                 <span>Ecosystem</span>
+
               </span>
+
               <i class="fa-solid fa-chevron-right text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+
             </a>
+
             <a href="#services" class="dropdown-nav-link flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-gray-200 hover:text-cyan-300 hover:bg-cyan-500/15 transition-all group" data-sec="services">
+
               <span class="flex items-center gap-2.5">
+
                 <i class="fa-solid fa-gears text-xs text-cyan-400 w-4 text-center"></i>
+
                 <span>Services</span>
+
               </span>
+
               <i class="fa-solid fa-chevron-right text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+
             </a>
+
             <a href="#why-neovis" class="dropdown-nav-link flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-gray-200 hover:text-cyan-300 hover:bg-cyan-500/15 transition-all group" data-sec="why-neovis">
+
               <span class="flex items-center gap-2.5">
+
                 <i class="fa-solid fa-award text-xs text-cyan-400 w-4 text-center"></i>
+
                 <span>Why Neovis</span>
+
               </span>
+
               <i class="fa-solid fa-chevron-right text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+
             </a>
+
             <a href="#calculator" class="dropdown-nav-link flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-gray-200 hover:text-cyan-300 hover:bg-cyan-500/15 transition-all group" data-sec="calculator">
+
               <span class="flex items-center gap-2.5">
+
                 <i class="fa-solid fa-calculator text-xs text-cyan-400 w-4 text-center"></i>
+
                 <span>ROI Calculator</span>
+
               </span>
+
               <i class="fa-solid fa-chevron-right text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+
             </a>
+
             <a href="#faq" class="dropdown-nav-link flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-gray-200 hover:text-cyan-300 hover:bg-cyan-500/15 transition-all group" data-sec="faq">
+
               <span class="flex items-center gap-2.5">
+
                 <i class="fa-solid fa-circle-question text-xs text-cyan-400 w-4 text-center"></i>
+
                 <span>FAQ</span>
+
               </span>
+
               <i class="fa-solid fa-chevron-right text-[10px] text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+
             </a>
+
           </div>
+
         </div>
 
+
+
       </div>
+
+
 
       <!-- Mobile Menu Toggle Button -->
+
       <button id="mobile-toggle" aria-label="Toggle Menu" class="md:hidden text-white text-2xl focus:outline-none p-2">
+
         <i class="fa-solid fa-bars-staggered" id="menu-icon"></i>
+
       </button>
+
     </div>
 
+
+
     <!-- Mobile Dropdown Menu -->
+
     <div id="mobile-menu" class="hidden md:hidden">
-      <div class="flex flex-col gap-3 mt-2 px-6 pb-6">
+
+      <div class="flex flex-col gap-3 mt-2">
+
         <a href="#hero" class="nav-link py-2 border-b border-white/5">Home</a>
+
         <a href="#fervox" class="nav-link py-2 border-b border-white/5">Fervox AI Spotlight</a>
+
         <a href="#how-it-works" class="nav-link py-2 border-b border-white/5">How It Works Process</a>
+
         <a href="#projects" class="nav-link py-2 border-b border-white/5">Ecosystem & Projects</a>
+
         <a href="#services" class="nav-link py-2 border-b border-white/5">Core Services</a>
+
         <a href="#why-neovis" class="nav-link py-2 border-b border-white/5">Why Neovis</a>
+
         <a href="#calculator" class="nav-link py-2 border-b border-white/5">ROI Calculator</a>
+
         <a href="#faq" class="nav-link py-2 border-b border-white/5">FAQ Accordion</a>
+
         <div class="pt-2 flex flex-col gap-3">
+
           <a href="https://neovis-projects.ai.studio" target="_blank" rel="noopener noreferrer" class="btn-glow text-center justify-center">
+
             <span>Explore Neovis Projects</span>
+
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
           </a>
+
         </div>
+
       </div>
+
     </div>
+
   </header>
+
+
 
   <main class="pt-28">
 
+
+
     <!-- HERO SECTION -->
+
     <section id="hero" class="py-20 md:py-32 relative overflow-hidden">
+
       <div class="container-custom relative z-10">
+
         <div class="max-w-4xl mx-auto text-center">
+
           
+
           <!-- Headline -->
+
           <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
+
             Empowering the Future with <br class="hidden sm:inline" />
+
             <span class="gradient-text">Intelligent AI Solutions</span>
+
           </h1>
 
+
+
           <!-- Subheadline -->
+
           <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+
             Neovis builds custom AI engines, automation systems, and high-performance applications designed to transform enterprise data into autonomous action.
+
           </p>
+
+
 
           <!-- CTAs -->
+
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16">
+
             <a href="https://neovis-projects.ai.studio" target="_blank" rel="noopener noreferrer" class="btn-glow w-full sm:w-auto text-base py-4 px-8">
+
               <span>Explore Neovis Projects</span>
+
               <i class="fa-solid fa-arrow-right"></i>
+
             </a>
+
             <a href="https://blinkinfinity999-sudo.github.io/Fervox-ai/" target="_blank" rel="noopener noreferrer" class="btn-outline w-full sm:w-auto text-base py-4 px-8">
+
               <i class="fa-solid fa-play text-cyan-400 text-sm"></i>
+
               <span>Try Fervox AI Demo</span>
+
             </a>
+
           </div>
+
+
 
           <!-- Metric Cards Row -->
+
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-white/10 max-w-3xl mx-auto">
+
             <div class="p-3">
+
               <div class="font-heading font-bold text-2xl sm:text-3xl text-cyan-400">99.8%</div>
+
               <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Qualification Accuracy</div>
+
             </div>
+
             <div class="p-3">
+
               <div class="font-heading font-bold text-2xl sm:text-3xl text-white">&lt;150ms</div>
+
               <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Average Latency</div>
+
             </div>
+
             <div class="p-3">
+
               <div class="font-heading font-bold text-2xl sm:text-3xl text-cyan-400">24/7</div>
+
               <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Autonomous Ops</div>
+
             </div>
+
             <div class="p-3">
+
               <div class="font-heading font-bold text-2xl sm:text-3xl text-white">100%</div>
+
               <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Enterprise Privacy</div>
+
             </div>
+
           </div>
 
+
+
         </div>
+
       </div>
+
     </section>
+
+
 
     <!-- FEATURED PRODUCT CARD: FERVOX AI -->
+
     <section id="fervox" class="py-20 relative">
+
       <div class="container-custom">
+
         
+
         <div class="text-center max-w-2xl mx-auto mb-12">
+
           <div class="badge-pill mb-3">
+
             <i class="fa-solid fa-crown text-amber-400"></i>
+
             <span>Featured AI Engine</span>
+
           </div>
+
           <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+
             Spotlight: <span class="gradient-text">Fervox AI</span>
+
           </h2>
+
           <p class="text-gray-400 mt-3 text-base">
+
             Smart conversational engine trained on custom documents with 24/7 automated lead qualification.
+
           </p>
+
         </div>
+
+
 
         <div class="glass-card p-8 md:p-12 border border-cyan-500/20 max-w-4xl mx-auto">
+
           <div class="flex flex-col items-center text-center">
+
             
+
             <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-black font-bold text-3xl shadow-xl shadow-cyan-500/30 mb-6">
+
               <i class="fa-solid fa-comments"></i>
+
             </div>
+
             
+
             <h3 class="text-3xl font-extrabold text-white mb-2">Fervox AI</h3>
+
             <span class="text-xs font-mono text-cyan-400 mb-6 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">v3.4 Conversational Engine</span>
 
+
+
             <p class="text-gray-300 max-w-2xl mb-8 leading-relaxed text-base">
+
               Fervox AI seamlessly ingests complex PDF documents, knowledge bases, and API streams to conduct human-grade conversations. It automatically qualifies incoming leads 24/7, extracts key metadata, and schedules high-value discovery sessions.
+
             </p>
 
+
+
             <!-- Core Capabilities Cards -->
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mb-8 text-left">
+
               <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/30 transition-all">
+
                 <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-sm mb-3">
+
                   <i class="fa-solid fa-file-pdf"></i>
+
                 </div>
+
                 <h4 class="text-sm font-bold text-white mb-1">Custom Ingestion</h4>
+
                 <p class="text-xs text-gray-400">RAG vector search across thousands of proprietary documents.</p>
+
               </div>
 
+
+
               <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/30 transition-all">
+
                 <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-sm mb-3">
+
                   <i class="fa-solid fa-user-check"></i>
+
                 </div>
+
                 <h4 class="text-sm font-bold text-white mb-1">Lead Qualification</h4>
+
                 <p class="text-xs text-gray-400">Scores leads automatically on budget, authority, need, and timeframe (BANT).</p>
+
               </div>
 
+
+
               <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/30 transition-all">
+
                 <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-sm mb-3">
+
                   <i class="fa-solid fa-bolt"></i>
+
                 </div>
+
                 <h4 class="text-sm font-bold text-white mb-1">Action Triggers</h4>
+
                 <p class="text-xs text-gray-400">Syncs instantly with enterprise CRMs, Slack notifications, and webhooks.</p>
+
               </div>
+
             </div>
+
+
 
             <div>
+
               <a href="https://blinkinfinity999-sudo.github.io/Fervox-ai/" target="_blank" rel="noopener noreferrer" class="btn-glow py-3.5 px-8 text-sm inline-flex items-center gap-3">
+
                 <span>Launch Fervox AI Portal</span>
+
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
               </a>
+
             </div>
 
+
+
           </div>
+
         </div>
 
+
+
       </div>
+
     </section>
+
+
 
     <!-- HOW IT WORKS TIMELINE SECTION -->
+
     <section id="how-it-works" class="py-24 relative overflow-hidden bg-gradient-to-b from-black/40 via-cyan-950/10 to-transparent">
+
       <div class="container-custom relative z-10">
+
         
+
         <!-- Section Header -->
+
         <div class="text-center max-w-3xl mx-auto mb-16">
+
           <div class="badge-pill mb-4">
+
             <i class="fa-solid fa-timeline text-cyan-400"></i>
+
             <span>ENGINEERING PROCESS</span>
+
           </div>
+
           <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+
             How It Works: <span class="gradient-text">Concept to Launch</span>
+
           </h2>
+
           <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+
             Our structured 4-stage engineering lifecycle guarantees rapid deployment, enterprise security, and seamless integration with your existing infrastructure.
+
           </p>
+
         </div>
+
+
 
         <!-- 4-Step Horizontal Process Timeline -->
+
         <div class="relative">
+
           
+
           <!-- Connecting Line (Desktop) -->
+
           <div class="hidden lg:block absolute top-1/2 left-12 right-12 h-0.5 bg-gradient-to-r from-cyan-500/10 via-cyan-400/40 to-blue-500/10 -translate-y-12 z-0"></div>
 
+
+
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+
             
+
             <!-- Step 1: Discovery -->
+
             <div class="glass-card p-7 flex flex-col justify-between group hover:border-cyan-400/60 transition-all duration-300 reveal-on-scroll scale-effect">
+
               <div>
+
                 <div class="flex items-center justify-between mb-6">
+
                   <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono font-bold">
+
                     STEP 01
+
                   </span>
+
                   <span class="text-xs text-gray-500 font-mono">Week 1</span>
+
                 </div>
+
                 <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-300 shadow-lg shadow-cyan-500/20">
+
                   <i class="fa-solid fa-magnifying-glass-chart"></i>
+
                 </div>
+
                 <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Discovery & Audit</h3>
+
                 <p class="text-gray-400 text-sm leading-relaxed mb-6">
+
                   Deep audit of workflow bottlenecks, API endpoints, and proprietary datasets to isolate high-impact AI automation opportunities.
+
                 </p>
+
               </div>
+
               <div class="pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-cyan-400 font-mono">
+
                 <i class="fa-solid fa-file-contract"></i>
+
                 <span>Deliverable: AI Roadmap Blueprint</span>
+
               </div>
+
             </div>
+
+
 
             <!-- Step 2: Architecture -->
+
             <div class="glass-card p-7 flex flex-col justify-between group hover:border-blue-400/60 transition-all duration-300 reveal-on-scroll scale-effect">
+
               <div>
+
                 <div class="flex items-center justify-between mb-6">
+
                   <span class="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold">
+
                     STEP 02
+
                   </span>
+
                   <span class="text-xs text-gray-500 font-mono">Weeks 2-3</span>
+
                 </div>
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-500/20 to-purple-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-black transition-all duration-300 shadow-lg shadow-blue-500/20">
-                  <i class="fa-solid fa-diagram-project"></i>
+
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-black transition-all duration-300 shadow-lg shadow-blue-500/20">
+
+                  <i class="fa-solid fa-cubes-stacked"></i>
+
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Custom Architecture</h3>
+
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Architecture & Design</h3>
+
                 <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                  Fine-tuning LLM embeddings, setting up Vector DBs (RAG), and designing secure API pipelines tailored to your ecosystem.
+
+                  Selecting foundation models, configuring vector database indexers, designing RAG pipelines, and establishing SOC2 security perimeters.
+
                 </p>
+
               </div>
+
               <div class="pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-blue-400 font-mono">
-                <i class="fa-solid fa-microchip"></i>
-                <span>Deliverable: Active Prototype</span>
+
+                <i class="fa-solid fa-sitemap"></i>
+
+                <span>Deliverable: Working Model Prototype</span>
+
               </div>
+
             </div>
 
-            <!-- Step 3: Deployment -->
+
+
+            <!-- Step 3: Integration -->
+
             <div class="glass-card p-7 flex flex-col justify-between group hover:border-purple-400/60 transition-all duration-300 reveal-on-scroll scale-effect">
+
               <div>
+
                 <div class="flex items-center justify-between mb-6">
+
                   <span class="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono font-bold">
+
                     STEP 03
+
                   </span>
-                  <span class="text-xs text-gray-500 font-mono">Weeks 4-5</span>
-                </div>
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-black transition-all duration-300 shadow-lg shadow-purple-500/20">
-                  <i class="fa-solid fa-rocket"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Integration & Test</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                  Stress testing with production loads, establishing fallback guardrails, and embedding web components into your apps.
-                </p>
-              </div>
-              <div class="pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-purple-400 font-mono">
-                <i class="fa-solid fa-shield-halved"></i>
-                <span>Deliverable: Live Production Build</span>
-              </div>
-            </div>
 
-            <!-- Step 4: Autonomous Ops -->
-            <div class="glass-card p-7 flex flex-col justify-between group hover:border-emerald-400/60 transition-all duration-300 reveal-on-scroll scale-effect">
-              <div>
-                <div class="flex items-center justify-between mb-6">
-                  <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
-                    STEP 04
-                  </span>
-                  <span class="text-xs text-gray-500 font-mono">Ongoing</span>
-                </div>
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-black transition-all duration-300 shadow-lg shadow-emerald-500/20">
-                  <i class="fa-solid fa-chart-line"></i>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">Scale & Optimize</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                  Real-time latency monitoring, automated prompt evaluation, and continuous learning from live user interactions.
-                </p>
-              </div>
-              <div class="pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-emerald-400 font-mono">
-                <i class="fa-solid fa-infinity"></i>
-                <span>Deliverable: 24/7 SLA & Monitoring</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- SCRIPT FOR INTERACTIVITY & DROPDOWN -->
-  <script>
-    // Navigation Dropdown
-    const dotsBtn = document.getElementById('dots-nav-btn');
-    const dropdown = document.getElementById('dots-nav-dropdown');
-    
-    dotsBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdown.classList.toggle('hidden');
-    });
-
-    document.addEventListener('click', () => {
-      if (!dropdown.classList.contains('hidden')) {
-        dropdown.classList.add('hidden');
-      }
-    });
-
-    // Mobile Toggle
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('mobile-menu-open');
-    });
-  </script>
-</body>
-</html>
+                  <span cl
