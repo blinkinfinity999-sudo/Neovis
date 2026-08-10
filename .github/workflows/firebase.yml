@@ -11,15 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
         with:
-          node-version: 22
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEOVIS }}
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Deploy Redirect to Firebase
+      - name: Deploy to Firebase Hosting
         run: firebase deploy --only hosting --project neovis
-        env:
-          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEOVIS }}
