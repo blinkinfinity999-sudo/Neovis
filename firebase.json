@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "redirects": [
+      {
+        "source": "/{,**}",
+        "destination": "https://blinkinfinity999-sudo.github.io/Neovis/",
+        "type": 301
+      }
+    ]
+  }
+}
